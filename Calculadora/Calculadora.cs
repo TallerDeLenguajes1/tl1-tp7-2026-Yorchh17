@@ -4,7 +4,7 @@ public class Calculadora
     private double dato;
     public Calculadora()
     {
-        dato=0;
+        dato=100;
     }
     
     public void sumar(double termino)
