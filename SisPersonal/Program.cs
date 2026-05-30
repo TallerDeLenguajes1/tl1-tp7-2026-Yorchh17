@@ -6,7 +6,7 @@ Empleado[] ListaEmpleado = new Empleado[3];
 Empleado emp1 = new Empleado();
 emp1.Nombre = "LA";
 emp1.Apellido = "CABRA";
-emp1.Fechanacimiento = new DateTime(1990, 5, 20); 
+emp1.Fechanacimiento = new DateTime(2004, 5, 20); 
 emp1.EstadoCivil = 'C';
 emp1.FechaIngreso = new DateTime(2015, 3, 10);
 emp1.SueldoBasico = 500000;
@@ -37,3 +37,31 @@ emp3.SueldoBasico = 100;
 emp3.Cargo = Cargos.Investigador;
 ListaEmpleado[2]=emp3;
 
+double montoT=0;
+
+foreach (Empleado emp in ListaEmpleado)
+{
+    montoT = montoT + emp.CalcularSalario();
+}
+
+
+Empleado empleadoGanador = ListaEmpleado[0]; 
+int menorTiempoJubilacion = empleadoGanador.CalcularJubilacion();
+
+foreach (Empleado emp in ListaEmpleado)
+{
+    int aux = emp.CalcularJubilacion();
+
+    if (aux < menorTiempoJubilacion)
+    {
+        menorTiempoJubilacion = aux;
+        empleadoGanador = emp;
+    }
+}
+
+Console.WriteLine("\n--- EMPLEADO MÁS PRÓXIMO A JUBILARSE ---");
+Console.WriteLine($"Nombre y Apellido: {empleadoGanador.Nombre} {empleadoGanador.Apellido}");
+Console.WriteLine($"Edad: {empleadoGanador.CalcularEdad()} años");
+Console.WriteLine($"Antigüedad: {empleadoGanador.CalcularAntiguedad()} años");
+Console.WriteLine($"Le faltan para jubilarse: {empleadoGanador.CalcularJubilacion()} años");
+Console.WriteLine($"Salario actual: ${empleadoGanador.CalcularSalario()}");
